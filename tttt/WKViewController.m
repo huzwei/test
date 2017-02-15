@@ -25,6 +25,8 @@
 
 -(void)loadyuanView{
     
+    ///设置环形图
+    
     UIView *greenView=[[UIView alloc]initWithFrame:CGRectMake(20, 110, SW-40, (SW-40)/4)];
     greenView.backgroundColor=[UIColor whiteColor];
     greenView.layer.cornerRadius = 10; //设置圆形的程度
