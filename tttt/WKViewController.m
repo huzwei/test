@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadyuanView];
-    
+   // [self loadWkWebView];
     // Do any additional setup after loading the view.
 }
 
