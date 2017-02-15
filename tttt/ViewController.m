@@ -29,9 +29,10 @@
     _webView.delegate=self;
     _webView.scalesPageToFit = YES;
     [_webView sizeToFit];
+    
     [self.view addSubview:_webView];
     // 遮罩
-    NSString *urlStr=@"http://mjfsc.sd.sgcc.com.cn/ppm/special_content/annualAccount.jhtml?consNo=57S1Zt25%2FKFfBdunKYta3w%3D%3D&timestamp=1485135202787&channl=ZSDL&sign=185ce55c79cdf767aa47cf789eff5032e565a0f3";
+    NSString *urlStr=@"https://www.baidu.com";
     
  //  NSString *urlStr=@"http://url.cn/444a5rZ";
     NSURL *url=[NSURL URLWithString:urlStr];

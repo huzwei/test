@@ -8,6 +8,8 @@
 
 #import "WKViewController.h"
 #import <WebKit/WebKit.h>
+#define SW [UIScreen mainScreen].bounds.size.width
+#define SH [UIScreen mainScreen].bounds.size.height
 @interface WKViewController ()<WKUIDelegate,WKNavigationDelegate>
 
 @end
@@ -16,15 +18,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   WKWebView *webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    [self.view addSubview:webView];
-
-    webView.UIDelegate = self;
-    webView.navigationDelegate = self;
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://mjfsc.sd.sgcc.com.cn/ppm/special_content/annualAccount.jhtml?consNo=57S1Zt25%2FKFfBdunKYta3w%3D%3D&timestamp=1485155134290&channl=ZSDL&sign=b32bdf66e9a58adc50671202d3a9208060555bfb"]]];
-    
+    [self loadyuanView];
     
     // Do any additional setup after loading the view.
+}
+
+-(void)loadyuanView{
+    
+    UIView *greenView=[[UIView alloc]initWithFrame:CGRectMake(20, 110, SW-40, (SW-40)/4)];
+    greenView.backgroundColor=[UIColor whiteColor];
+    greenView.layer.cornerRadius = 10; //设置圆形的程度
+    greenView.layer.masksToBounds = YES; //设置是否切圆
+    greenView.layer.borderColor = [[UIColor greenColor]CGColor]; //设置圆周围的颜色
+    greenView.layer.borderWidth = 2; //设置圆环的粗细宽度
+    [self.view addSubview:greenView];
+    for (NSInteger i=0; i<5; i++) {
+        for (NSInteger j=0; j<2; j++) {
+            UIView *yuanView=[[UIView alloc]initWithFrame:CGRectMake(10+(SW-40)/4*i, 100+(SW-40)/4*j, 20, 20)];
+            yuanView.backgroundColor=[UIColor whiteColor];
+            yuanView.layer.cornerRadius = 10; //设置圆形的程度
+            yuanView.layer.masksToBounds = YES; //设置是否切圆
+            yuanView.layer.borderColor = [[UIColor greenColor]CGColor]; //设置圆周围的颜色
+            yuanView.layer.borderWidth = 2; //设置圆环的粗细宽度
+            [self.view addSubview:yuanView];
+     }
+    }
+}
+
+
+-(void)loadWkWebView{
+    WKWebView *webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.view addSubview:webView];
+    
+    webView.UIDelegate = self;
+    webView.navigationDelegate = self;
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]]];
+
 }
 #pragma mark - WKNavigationDelegate
 // 页面开始加载时调用
